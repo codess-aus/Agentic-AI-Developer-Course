@@ -1,0 +1,143 @@
+site_name: Agentic AI Workshop
+site_description: Build, supervise, and govern agentic AI systems with GitHub, Michelle, and Coda.
+site_url: https://codess-aus.github.io/Agentic-AI-Developer-Course/
+repo_url: https://github.com/codess-aus/Agentic-AI-Developer-Course
+repo_name: codess-aus / Agentic AI
+site_author: Michelle Mei-Ling Sandford
+copyright: Workshop by Michelle Mei-Ling Sandford. Agents propose. People and policy accept.
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  font: false
+  logo: assets/workshop-mark.svg
+  favicon: assets/workshop-mark.svg
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+hooks:
+  - hooks/slides.py
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.snippets:
+      check_paths: true
+
+extra_css:
+  - stylesheets/workshop.css
+
+extra:
+  social:
+    - icon: fontawesome/solid/pen-nib
+      link: https://www.scaling-guacamole.com
+      name: Michelle's blog, Scaling Guacamole
+    - icon: fontawesome/brands/github
+      link: https://github.com/codess-aus
+      name: Michelle on GitHub
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/michellesandford/
+      name: Michelle on LinkedIn
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/codess-aus.bsky.social
+      name: Michelle on Bluesky
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/c/MichelleSandford
+      name: Michelle on YouTube
+
+exclude_docs: |
+  assets/readme.md
+
+validation:
+  nav:
+    omitted_files: warn
+  links:
+    not_found: warn
+    unrecognized_links: warn
+    anchors: warn
+
+nav:
+  - Home: index.md
+  - "01 · Foundations":
+      - From assistance to action: chapters/01-assistance-to-action.md
+      - Assistant versus agent: chapters/02-assistant-versus-agent.md
+      - Plan, act, evaluate: chapters/03-agent-lifecycle.md
+      - Responsibility and traceability: chapters/04-responsibility.md
+      - GitHub as the control plane: chapters/05-control-plane.md
+      - The contributor model: chapters/06-contributor-model.md
+  - "02 · Architecture":
+      - Design the architecture: chapters/07-architecture.md
+      - Map agents to the SDLC: chapters/08-sdlc.md
+      - Define the task contract: chapters/09-task-contract.md
+      - Plan before acting: chapters/10-planning.md
+      - Pull request governance: chapters/11-pr-governance.md
+      - Approvals and acceptance: chapters/12-approvals.md
+      - Reliable workflow handoffs: chapters/13-workflow-handoffs.md
+  - "03 · Tools & boundaries":
+      - Tools, hooks, and security: chapters/14-tools-and-hooks.md
+      - APIs and workflows: chapters/15-apis-and-workflows.md
+      - Execution boundaries: chapters/16-execution-boundaries.md
+      - Cloud agent boundaries: chapters/17-cloud-boundaries.md
+      - Custom agents and instructions: chapters/18-custom-agents.md
+      - A secure tooling ecosystem: chapters/19-secure-tooling.md
+      - Discover MCP servers: chapters/20-mcp-discovery.md
+      - Govern MCP access: chapters/21-mcp-governance.md
+      - Execution limits and protections: chapters/22-execution-limits.md
+  - "04 · Orchestration":
+      - Multi-agent responsibilities: chapters/23-multi-agent.md
+      - Workflow orchestration: chapters/24-orchestration.md
+      - Isolate parallel work: chapters/25-isolation.md
+      - Evidence and handoffs: chapters/26-observability.md
+      - Operate at scale: chapters/27-operate-at-scale.md
+      - Recover safely: chapters/28-recovery.md
+  - "05 · Memory & evaluation":
+      - Memory, state, and evaluation: chapters/29-memory-state-evaluation.md
+      - Memory strategies: chapters/30-memory-strategies.md
+      - Persist state: chapters/31-persist-state.md
+      - Continue across tools: chapters/32-continuity.md
+      - Enforce quality gates: chapters/33-quality-gates.md
+      - Improve the system: chapters/34-improvement-loop.md
+  - "06 · Governance":
+      - Governance and guardrails: chapters/35-governance.md
+      - Risk-based autonomy: chapters/36-risk-based-autonomy.md
+      - GitHub governance controls: chapters/37-governance-controls.md
+      - Humans at decision points: chapters/38-human-in-the-loop.md
+      - Least privilege: chapters/39-least-privilege.md
+      - Auditable Actions: chapters/40-auditable-actions.md
+      - Operational governance: chapters/41-operational-governance.md
+  - Resources: resources.md

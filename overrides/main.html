@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if page.meta.hero %}
+    <p class="workshop-eyebrow">{{ page.meta.eyebrow | default("THE AGENTIC AI FIELD GUIDE") | e }}</p>
+    <figure class="workshop-hero">
+      <img
+        src="{{ hero_sources[-2].url | url | e }}"
+        srcset="{% for source in hero_sources %}{{ source.url | url | e }} {{ source.width }}w{% if not loop.last %}, {% endif %}{% endfor %}"
+        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 90vw, 1000px"
+        alt="{{ page.meta.hero_alt | e }}"
+        width="{{ hero_width }}"
+        height="{{ hero_height }}"
+        fetchpriority="high"
+        decoding="async"
+      >
+      <figcaption>
+        <span>Michelle &amp; Coda's agentic AI field guide</span>
+        <a href="{{ ('assets/' ~ page.meta.hero) | url | e }}">Open full-size slide</a>
+      </figcaption>
+    </figure>
+  {% endif %}
+
+  {{ super() }}
+
+  {% if page and not page.is_404 %}
+    {# Keep the workshop traversable at both ends, including Home and Resources. #}
+    {% set previous = page.previous_page or (nav.pages | last) %}
+    {% set next = page.next_page or nav.homepage %}
+    <nav class="workshop-pagination" aria-label="Workshop page navigation">
+      <a class="workshop-page-link" href="{{ previous.url | url | e }}" rel="prev">
+        <span class="workshop-page-direction">← Previous</span>
+        <span>{{ previous.title | e }}</span>
+      </a>
+      <a class="workshop-home-link" href="{{ nav.homepage.url | url | e }}" aria-label="Back to workshop Home">
+        Home
+      </a>
+      <a class="workshop-page-link workshop-page-link--next" href="{{ next.url | url | e }}" rel="next">
+        <span class="workshop-page-direction">Next →</span>
+        <span>{{ next.title | e }}</span>
+      </a>
+    </nav>
+  {% endif %}
+{% endblock %}

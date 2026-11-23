@@ -1,0 +1,7 @@
+{# A plain source link avoids background requests for repository statistics. #}
+<a href="{{ config.repo_url | e }}" title="Workshop source on GitHub" class="md-source">
+  <div class="md-source__icon md-icon">
+    {% include ".icons/fontawesome/brands/github.svg" %}
+  </div>
+  <div class="md-source__repository">{{ config.repo_name | e }}</div>
+</a>
