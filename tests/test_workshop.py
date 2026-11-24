@@ -72,6 +72,23 @@ class WorkshopTests(unittest.TestCase):
                     if width == "640w":
                         self.assertLess(image_path.stat().st_size, 250_000)
 
+    def test_home_gallery_links_every_chapter_thumbnail(self):
+        home = SITE / "index.html"
+        tags = PageParser(home.read_text()).tags
+        cards = [attrs["href"] for tag, attrs in tags if attrs.get("class") == "chapter-thumb"]
+        thumbs = [
+            attrs
+            for tag, attrs in tags
+            if tag == "img" and attrs.get("loading") == "lazy"
+        ]
+        chapters = sorted((DOCS / "chapters").glob("*.md"))
+        self.assertEqual(cards, [f"chapters/{path.stem}/" for path in chapters])
+        self.assertEqual(len(thumbs), len(chapters))
+        for chapter, thumb in zip(chapters, thumbs):
+            self.assertEqual(thumb["alt"], "")
+            self.assertEqual(thumb["src"], f"assets/slides/{chapter.stem}-640.webp")
+            self.assertTrue((SITE / thumb["src"]).is_file())
+
     def test_all_pages_have_previous_home_and_next(self):
         sources = [source for source, _ in workshop_pages()] + [DOCS / "resources.md"]
         for index, source in enumerate(sources):

@@ -72,6 +72,12 @@ Match autonomy to risk, apply least privilege, place humans at consequential dec
 
 </div>
 
+## Browse every chapter
+
+Jump straight to any lesson by its slide.
+
+<!-- chapter-gallery -->
+
 ## Before you begin
 
 You should be comfortable with repositories, branches, pull requests, and basic CI/CD concepts. Bring a GitHub account and a **disposable practice repository** with a small application and a test command you can run.
